@@ -44,7 +44,7 @@
         lastKnownScrollPosition = window.scrollY;
 
         if (!ticking) {
-            // Throttle the event to remove covers every 20ms at most and wait until at least
+            // Throttle the event to remove covers every 20ms at most and wait until the user has scrolled a bit
             setTimeout(() => {
                 if (Math.abs(lastParsedScrollPosition-lastKnownScrollPosition) >= 75) {
                     removeCurrentCovers();
@@ -59,5 +59,5 @@
 
     removeCurrentCovers();
 
-    setTimeout(removeCurrentCovers, 1000);
+    setTimeout(removeCurrentCovers, 1000); // lately tumblr has been re-applying content labels after a little bit, so this will wait 1 second and d it again
 })();
